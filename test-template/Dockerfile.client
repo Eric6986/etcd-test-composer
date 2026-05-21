@@ -19,6 +19,11 @@ RUN rm -r target/classes/ target/generated-sources/ target/maven-archiver/ targe
 # Copying shell executable into Test Composer directory
 COPY ./shell-executables/eventually_health_check.sh /opt/antithesis/test/v1/main/eventually_health_check.sh
 
+# Copying the PARALLEL (anytime) Java driver shell wrapper into Test Composer directory.
+# Both Java drivers (eventually + parallel) are built by the single `mvn install`
+# above, so no extra build step is needed here.
+COPY ./shell-executables/parallel_kv_churn.sh /opt/antithesis/test/v1/main/parallel_kv_churn.sh
+
 
 # RUST:
 
