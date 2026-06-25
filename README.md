@@ -115,3 +115,12 @@ You've now validated that your test is ready to run on the Antithesis platform! 
 ## Example Report
 
 Using the three node etcd cluster and the `client` image built from this repository, we ran a 1 hour test. The resulting [triage report](https://antithesis.com/docs/reports/triage/) can be found [here](https://public.antithesis.com/report/f6oh7KZ6Pchcv9nGfo5oL9IU/lCbpXJUfNwfknLazqvV3mWD3CM37l89raJTdSXNBh3c.html), and [our docs](https://antithesis.com/docs/reports/triage/) show you how to interpret it. 
+
+## Branching model
+
+**Direct-to-main** (standardized 2026-06-25; see team-memory `project_deploy_branches`):
+
+- `main` — **production** (Coolify prod watches it). No `staging` branch.
+- `agent/<short-desc>` — short-lived feature branches **off `main`**.
+
+Flow: `feature → main`. Branch every feature off `main`, open PRs **`--base main`**. Never push directly to `main` — the owner merges. Old bases (`master`/`develop`/`dev`) are retired.
